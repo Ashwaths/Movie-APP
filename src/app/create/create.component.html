@@ -1,0 +1,55 @@
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Book Movie</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a style="cursor: pointer" (click)="save()">Save</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Add Movie</div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" id="title" placeholder="Title" [(ngModel)]="movie.name">
+                    </div>
+                    <div class="form-group">
+                        <label for="genre">Genre</label>
+                        <input type="text" class="form-control" id="genre" placeholder="Genre" [(ngModel)]="movie.genre">
+                    </div>
+                    <div class="form-group">
+                        <img [src]="url" for="image" height="200"> <br/>
+                        <input type='file' (change)="onSelectFile($event)">
+                    </div>
+                    <div>
+                        <star-rating value="0" checkedcolor="yellow" uncheckedcolor="black" size="24px"    readonly="false" (rate)="onRate($event)"></star-rating>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" [(ngModel)]="movie.formats.digital"> Digital Copy
+                        </label>
+                        <label>
+                            <input type="checkbox" [(ngModel)]="movie.formats.bluray"> Blu-Ray
+                        </label>
+                        <label>
+                            <input type="checkbox" [(ngModel)]="movie.formats.dvd"> DVD
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
