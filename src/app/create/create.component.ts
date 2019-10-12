@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-create',
@@ -13,7 +14,7 @@ export class CreateComponent implements OnInit {
     public url: any;
     public result:any;
 
-    public constructor(private http: Http, private location: Location) {
+    public constructor(private http: Http, private location: Location, private router: Router) {
         this.movie = {
             "name": "",
             "genre": "",
@@ -30,15 +31,15 @@ export class CreateComponent implements OnInit {
     public ngOnInit() { }
 
     public save() {
-        if(this.movie.name && this.movie.genre) {
-            let headers = new Headers({ "Content-Type": "application/json" });
-            let options = new RequestOptions({ "headers": headers });
-            this.http.post("http://localhost:4200/movies", JSON.stringify(this.movie), options)
-                .subscribe(result => {
-                    this.location.back();
-                    //console.log(headers);
-                });
-        }
+        // if(this.movie.name && this.movie.genre) {
+        //     let headers = new Headers({ "Content-Type": "application/json" });
+        //     let options = new RequestOptions({ "headers": headers });
+        //     this.http.post("http://localhost:4200/movies", JSON.stringify(this.movie), options)
+        //         .subscribe(result => {
+        //             this.location.back();
+        //         });
+        // }
+        this.router.navigate(["save"]);
     }
     onSelectFile(event) { 
         if (event.target.files && event.target.files[0]) {
